@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="main">
+    <VideoCall class="video-call" :roomUrl="roomUrl" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from "vue";
+import VideoCall from "./components/VideoCall.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    VideoCall,
+  },
+  setup() {
+    const roomUrl = ref("https://chiragkanani.daily.co/U4imlEsWmdYaUdS2EgrN"); // Replace with your Daily.co room URL
+
+    return {
+      roomUrl,
+    };
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.video-call {
+  width: 60%;
+  height: 80%;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
 }
 </style>
